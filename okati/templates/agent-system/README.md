@@ -26,8 +26,14 @@ graph TD
 | --- | --- | --- |
 | `PORT` | 3100 | Port from 3000 to 3999 |
 | `AGENT_MODE` | auto | auto, mock or live |
-| `ANTHROPIC_API_KEY` | empty | Needed only in live mode |
-| `AGENT_MODEL` | claude-sonnet-5-5 | Model for live mode |
+| `AGENT_PROVIDER` | auto | openai or anthropic. Auto picks openai if only `OPENAI_API_KEY` has a value. |
+| `OPENAI_API_KEY` | empty | OpenAI key. Needed only in live mode. |
+| `OPENAI_MODEL` | empty | OpenAI model name. Needed only in live mode. |
+| `ANTHROPIC_API_KEY` | empty | Anthropic key. Needed only in live mode. |
+| `AGENT_MODEL` | claude-sonnet-5-5 | Anthropic model for live mode |
+
+To add your keys, copy `.env.example` to `.env` in this folder and fill in the values.
+`npm start` reads `.env`. Git ignores `.env`.
 
 ## Example
 

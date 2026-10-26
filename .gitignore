@@ -1,3 +1,4 @@
 .okati/
 node_modules/
 agenticexperiment-/
+.env

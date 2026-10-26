@@ -42,6 +42,8 @@ export function checkPort(value) {
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  // Load keys from a local .env file, if one exists. Values in the shell win.
+  try { process.loadEnvFile(new URL("./.env", import.meta.url)); } catch {}
   const port = checkPort(process.env.PORT || 3100);
   createServer().listen(port, "127.0.0.1", () => {
     console.log(`listening on http://localhost:${port} (model mode: ${modelMode()})`);
