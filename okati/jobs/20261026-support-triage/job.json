@@ -1,0 +1,34 @@
+{
+  "id": "20261026-support-triage",
+  "title": "Support ticket triage agent",
+  "status": "merged",
+  "agent": null,
+  "round": 2,
+  "max_rounds": 5,
+  "branch": "okati/20261026-support-triage",
+  "backlog_item": "Support ticket triage agent: read new tickets, set the team and the priority",
+  "created": "2026-10-26T20:48:47Z",
+  "updated": "2026-10-26T21:08:30Z",
+  "history": [
+    {
+      "round": 1,
+      "test": "PASS",
+      "visual": "PASS",
+      "review": "CHANGES",
+      "review_sha256": "b452431f4f080cece3350cdb54a9359b66ba69f9dec321916b414a204efe10d1",
+      "run": null,
+      "run_sha256": null
+    },
+    {
+      "round": 2,
+      "test": "PASS",
+      "visual": "PASS",
+      "review": "APPROVE",
+      "review_sha256": "254eaad33d2eec65eede16d40e88bd1d79131d2344e852d2eadb2a6010c53e67",
+      "run": "PASS",
+      "run_sha256": "365aa6509a9feef2f907d1f00b262807a7dc8ce7edb5246a89a6cae770f4f505"
+    }
+  ],
+  "needs_human": null,
+  "notes": []
+}

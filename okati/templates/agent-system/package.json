@@ -1,0 +1,13 @@
+{
+  "name": "okati-agent-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Minimal okati agentic system: one agent, one tool, POST /run, GET /health.",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/*.test.js",
+    "evals": "node evals/run-evals.js"
+  }
+}

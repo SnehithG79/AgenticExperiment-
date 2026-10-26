@@ -1,0 +1,23 @@
+graph TD
+  run_input[POST /run input - server.js] --> orchestrator
+  schedule[schedule every TRIAGE_INTERVAL_MINUTES - server.js startSchedule] --> orchestrator
+  orchestrator -->|loadConfig at request start| triage_config
+  orchestrator -->|1 callTool| fetch_new_tickets
+  fetch_new_tickets --> ticket_api[(ticket_api fake or rest)]
+  orchestrator -->|2 for each ticket| dedupe
+  dedupe --> validate_ticket
+  validate_ticket -->|invalid: missing_ticket_id, missing_body, invalid_body_type, invalid_subject_type| log_error
+  validate_ticket -->|valid| state_store[(state_store)]
+  state_store -->|has id| skip
+  state_store -->|not processed| triager
+  triager -->|tool call| get_triage_rules
+  get_triage_rules --> triage_config[(triage_config)]
+  triager -->|AgentError or other error, attempt 1| retry_once
+  retry_once -->|second failure| route_review
+  triager -->|valid output| route_review
+  route_review -->|3 callTool| update_ticket
+  update_ticket --> ticket_api
+  update_ticket -->|ok: store.add| state_store
+  update_ticket -->|error code| log_error
+  orchestrator -->|4 after all tickets| summary
+  clock[(clock)] --> summary

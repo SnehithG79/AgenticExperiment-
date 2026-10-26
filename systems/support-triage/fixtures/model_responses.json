@@ -1,0 +1,22 @@
+{
+  "TCK-1001": {"team":"billing","priority":"P2","reason":"Duplicate card charge on an invoice. The customer needs a refund.","confidence":0.93,"language":"en"},
+  "TCK-1002": {"team":"technical","priority":"P1","reason":"All API calls fail with HTTP 500. This is a service outage.","confidence":0.97,"language":"en"},
+  "TCK-1003": {"team":"account","priority":"P2","reason":"Password reset fails and the customer cannot log in.","confidence":0.9,"language":"en"},
+  "TCK-1004": {"team":"sales","priority":"P4","reason":"Pricing question for new seats.","confidence":0.88,"language":"en"},
+  "TCK-1005": {"team":"technical","priority":"P4","reason":"How-to question about a product feature.","confidence":0.82,"language":"en"},
+  "TCK-1006": {"team":"billing","priority":"P3","reason":"Refund request for a cancelled subscription.","confidence":0.91,"language":"en"},
+  "TCK-1007": {"team":"account","priority":"P1","reason":"Possible account takeover. This is a security issue.","confidence":0.95,"language":"en"},
+  "TCK-1008": {"team":"technical","priority":"P3","reason":"Performance problem on the dashboard.","confidence":0.86,"language":"en"},
+  "TCK-1009": {"team":"account","priority":"P3","reason":"Account profile change request.","confidence":0.89,"language":"en"},
+  "TCK-1010": {"team":"sales","priority":"P4","reason":"Demo request from a new prospect.","confidence":0.9,"language":"en"},
+  "TCK-1011": {"team":"billing","priority":"P2","reason":"Payment failure blocks the service for one customer.","confidence":0.87,"language":"en"},
+  "TCK-1012": {"team":"technical","priority":"P3","reason":"Integration defect in webhook data.","confidence":0.84,"language":"en"},
+  "TCK-1013": {"team":"account","priority":"P4","reason":"Request to add a user.","confidence":0.8,"language":"en"},
+  "TCK-1014": {"team":"sales","priority":"P3","reason":"Plan discount question.","confidence":0.78,"language":"en"},
+  "TCK-1015": {"team":"billing","priority":"P3","reason":"Invoice data is missing a tax number.","confidence":0.85,"language":"en"},
+  "TCK-1016": {"team":"sales","priority":"P3","reason":"Quote and price question.","confidence":0.7,"language":"en"},
+  "TCK-1017": {"team":"technical","priority":"P3","reason":"App crash on start.","confidence":0.8,"language":"en"},
+  "TCK-1018": {"team":"technical","priority":"P3","reason":"The ticket does not give enough detail.","confidence":0.45,"language":"en"},
+  "TCK-1019": {"team":"account","priority":"P2","reason":"Customer cannot log in.","confidence":0.9,"language":"es"},
+  "TCK-1020": {"raw":"team: technical, priority: P3"}
+}
