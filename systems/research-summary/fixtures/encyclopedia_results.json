@@ -1,0 +1,21 @@
+{
+  "What is CRISPR?": [
+    { "title": "CRISPR", "url": "https://encyclopedia.example.test/wiki/CRISPR", "extract": "CRISPR is a family of DNA sequences found in bacteria and archaea." },
+    { "title": "Cas9", "url": "https://encyclopedia.example.test/wiki/Cas9", "extract": "Cas9 is an enzyme that cuts DNA at a site that a guide RNA selects." }
+  ],
+  "How do vaccines train the immune system?": [
+    { "title": "Vaccine", "url": "https://encyclopedia.example.test/wiki/Vaccine", "extract": "A vaccine is a biological preparation that gives active acquired immunity to a particular disease." }
+  ],
+  "What causes ocean tides?": [
+    { "title": "Tide", "url": "https://encyclopedia.example.test/wiki/Tide", "extract": "Tides are the rise and fall of sea levels caused by the gravity of the Moon and the Sun." }
+  ],
+  "How does photosynthesis work?": [
+    { "title": "Photosynthesis", "url": "https://encyclopedia.example.test/wiki/Photosynthesis", "extract": "Photosynthesis takes place mainly in the chloroplasts of plant cells." },
+    { "title": "Calvin cycle", "url": "https://encyclopedia.example.test/wiki/Calvin_cycle", "extract": "The Calvin cycle uses energy from the light reactions to fix carbon dioxide into sugar." }
+  ],
+  "What is a black hole?": [
+    { "title": "Black hole", "url": "https://encyclopedia.example.test/wiki/Black_hole", "extract": "Black holes form when very massive stars collapse at the end of their life." }
+  ],
+  "How do honeybees communicate?": { "error": "source_unavailable" },
+  "What is the zorblax protocol?": []
+}

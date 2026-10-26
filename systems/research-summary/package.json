@@ -1,0 +1,13 @@
+{
+  "name": "research-summary",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Research summary: one agent (researcher) searches three sources and writes a summary with checked [n] citations.",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/*.test.js",
+    "evals": "node evals/run-evals.js"
+  }
+}

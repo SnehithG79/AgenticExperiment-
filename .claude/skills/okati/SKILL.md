@@ -221,9 +221,11 @@ Reason: <one sentence>
    If the round is equal to 5, tell the user that the job used all rounds. Tell the user to start a new job. Stop.
 5. Change the backlog mark from `[!]` back to `[ ]`.
 6. If the decision changes the plan, write the decision to `request.md` under `## Human decision`. Go to step 6 of section 6.
-7. If the decision changes the design, go to step 8 of section 6. Keep the branch.
+7. If the decision changes the design, go to step 8 of section 6. Keep the branch and the round count.
+   Do not do step 9 again if the worktree exists. The designer reads the decision in `needs-human-round-<N>.md`.
 8. If the decision is a correction to the code, go to step 10 of section 6.
    The coding agent reads the decision in `needs-human-round-<N>.md`.
+9. A human decision has priority over a `CHANGE` item of an earlier review.
 
 ## 13. Job folder layout
 

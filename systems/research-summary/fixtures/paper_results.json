@@ -1,0 +1,29 @@
+{
+  "What is CRISPR?": [
+    { "title": "Programmable DNA cutting with RNA-guided Cas9", "url": "https://papers.example.test/abs/crispr-0001", "authors": ["Test Author A", "Test Author B"], "year": 2012, "abstract": "The study shows that the Cas9 protein can be programmed with RNA to cut specific DNA sequences." },
+    { "title": "Editing several genes at once with CRISPR-Cas9", "url": "https://papers.example.test/abs/crispr-0002", "authors": ["Test Author A", "Test Author B"], "year": 2013, "abstract": "The authors use CRISPR-Cas9 to edit several genes at the same time in human cells." },
+    { "title": "Off-target effects of CRISPR gene editing", "url": "https://papers.example.test/abs/crispr-0003", "authors": ["Test Author A", "Test Author B"], "year": 2019, "abstract": "The review describes unwanted cuts at DNA sites that are similar to the target site." }
+  ],
+  "How do vaccines train the immune system?": [
+    { "title": "Mechanisms of vaccine-induced immune memory", "url": "https://papers.example.test/abs/vaccine-0001", "authors": ["Test Author A", "Test Author B"], "year": 2018, "abstract": "The paper describes how vaccines create long-lived memory B cells and T cells." },
+    { "title": "mRNA vaccines: a new era in vaccinology", "url": "https://papers.example.test/abs/vaccine-0002", "authors": ["Test Author A", "Test Author B"], "year": 2018, "abstract": "mRNA vaccines give cells instructions to make a harmless piece of a viral protein." },
+    { "title": "Adjuvants and the innate immune response", "url": "https://papers.example.test/abs/vaccine-0003", "authors": ["Test Author A", "Test Author B"], "year": 2020, "abstract": "Adjuvants increase the immune response to a vaccine antigen." }
+  ],
+  "What causes ocean tides?": [
+    { "title": "Lunar gravitational forcing of ocean tides", "url": "https://papers.example.test/abs/tides-0001", "authors": ["Test Author A", "Test Author B"], "year": 2015, "abstract": "The Moon's gravity causes two tidal bulges on opposite sides of the Earth." },
+    { "title": "Spring and neap tides", "url": "https://papers.example.test/abs/tides-0002", "authors": ["Test Author A", "Test Author B"], "year": 2017, "abstract": "Spring tides occur when the Sun, Moon and Earth are in a line." },
+    { "title": "Tidal energy dissipation in shallow seas", "url": "https://papers.example.test/abs/tides-0003", "authors": ["Test Author A", "Test Author B"], "year": 2021, "abstract": "Friction in shallow seas removes energy from the tides." }
+  ],
+  "How does photosynthesis work?": [],
+  "What is a black hole?": [
+    { "title": "Hawking radiation from black holes", "url": "https://papers.example.test/abs/blackhole-0001", "authors": ["Test Author A", "Test Author B"], "year": 2016, "abstract": "Quantum effects near the event horizon cause black holes to emit Hawking radiation." },
+    { "title": "Gravitational waves from a binary black hole merger", "url": "https://papers.example.test/abs/blackhole-0002", "authors": ["Test Author A", "Test Author B"], "year": 2016, "abstract": "Detectors observed gravitational waves from two merging black holes." },
+    { "title": "Supermassive black holes in galaxy centers", "url": "https://papers.example.test/abs/blackhole-0003", "authors": ["Test Author A", "Test Author B"], "year": 2020, "abstract": "Most large galaxies have a supermassive black hole at their center." }
+  ],
+  "How do honeybees communicate?": [
+    { "title": "Decoding the honeybee waggle dance", "url": "https://papers.example.test/abs/bees-0001", "authors": ["Test Author A", "Test Author B"], "year": 2014, "abstract": "The angle of the waggle run relative to vertical shows the direction of the food relative to the sun." },
+    { "title": "Alarm pheromone signaling in honeybees", "url": "https://papers.example.test/abs/bees-0002", "authors": ["Test Author A", "Test Author B"], "year": 2017, "abstract": "Isopentyl acetate is the main component of the honeybee alarm pheromone." },
+    { "title": "Vibrational signals in honeybee colonies", "url": "https://papers.example.test/abs/bees-0003", "authors": ["Test Author A", "Test Author B"], "year": 2022, "abstract": "Worker bees use vibration signals to change the activity of other workers." }
+  ],
+  "What is the zorblax protocol?": { "error": "source_unavailable" }
+}

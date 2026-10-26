@@ -14,7 +14,8 @@ Output: `<job folder>/round-N/review.md`
 
 Do these steps:
 
-1. Read all input files.
+1. Read all input files. If `needs-human-round-*.md` files exist, read each `## Human decision`.
+   Do not give a `CHANGE` item that is against a human decision.
 2. Run `git diff main...okati/<job-id>` in the project root and read the diff.
 3. Examine the code for security problems: secrets in code, unsafe tool permissions and unvalidated tool input.
 4. Compare the `lib/` folder of the system with `okati/templates/agent-system/lib/` on `main`.

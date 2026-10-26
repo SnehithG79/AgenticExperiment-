@@ -19,7 +19,7 @@ Run `npm test` and `npm start` to see it work.
   tools/               one file for each tool: input schema, output schema, run function
   lib/
     agent-loop.js      tool-use loop. Validates each tool input. Do not change.
-    llm.js             live model or mock model. Do not change.
+    llm.js             live model (OpenAI or Anthropic) or mock model. Do not change.
     schema.js          JSON Schema subset validator. Do not change.
   evals/
     cases.json         one object for each evaluation case: id, input, expected
@@ -32,17 +32,20 @@ Run `npm test` and `npm start` to see it work.
 
 | `AGENT_MODE` | Result |
 | --- | --- |
-| `auto` (default) | Live mode if `ANTHROPIC_API_KEY` has a value. If not, mock mode. |
+| `auto` (default) | Live mode if the provider key has a value. If not, mock mode. |
 | `mock` | Each agent uses its deterministic `mock(messages)` policy. No credential. |
-| `live` | Calls the Anthropic Messages API with `ANTHROPIC_API_KEY`. |
+| `live` | Calls OpenAI (`OPENAI_API_KEY`, `OPENAI_MODEL`) or Anthropic (`ANTHROPIC_API_KEY`). `AGENT_PROVIDER` selects. |
 
 The mock policy must do the same steps as the prompt.
 It must return content blocks in the Messages API format: `text` or `tool_use`.
 Tests and localhost runs use mock mode.
 
+`npm start` reads keys from `.env` in the system folder. Copy `.env.example` to `.env`. Do not commit `.env`.
+
 ## Rules
 
 1. Read all API keys from environment variables. Do not put a key in the code.
+   `server.js` can load a local `.env` file into the environment. Git ignores `.env`. Do not commit a `.env` file.
 2. Validate each tool input against its schema before the tool runs. `lib/agent-loop.js` does this.
 3. Give each agent only the tools that the design lists for that agent.
 4. Make `POST /run` accept a JSON body `{"input": ...}`.

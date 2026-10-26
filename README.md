@@ -157,11 +157,18 @@ Each system has two model modes:
 
 | `AGENT_MODE` | Result |
 | --- | --- |
-| `auto` (default) | Live mode if `ANTHROPIC_API_KEY` has a value. If not, mock mode. |
+| `auto` (default) | Live mode if the provider key has a value. If not, mock mode. |
 | `mock` | Each agent uses a deterministic mock policy. No credential is necessary. |
-| `live` | Calls the Anthropic Messages API with `ANTHROPIC_API_KEY`. |
+| `live` | Calls OpenAI or Anthropic. `AGENT_PROVIDER`, `OPENAI_API_KEY` and `OPENAI_MODEL` (or `ANTHROPIC_API_KEY`) select. |
 
 The tester and the localhost agent use mock mode.
+
+### Add your API keys
+
+1. Go to the system folder, for example `systems/support-triage/`.
+2. Copy `.env.example` to `.env`.
+3. Write your key and model in `.env`, for example `OPENAI_API_KEY` and `OPENAI_MODEL`.
+4. Run `npm start`. The server reads `.env`. Git ignores `.env`.
 
 ## Configuration
 

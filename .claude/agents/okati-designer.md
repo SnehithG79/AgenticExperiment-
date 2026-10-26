@@ -15,6 +15,7 @@ Output: `<job folder>/design.md`
 Do these steps:
 
 1. Read `plan.md` and `TEMPLATE.md`. Read the template code in `okati/templates/agent-system/`.
+   If `needs-human-round-*.md` files exist, read each `## Human decision`. Obey each decision.
 2. Name the system folder: `systems/<short-name>/`. Use the short name from the job ID.
 3. Define each agent of the new system: name, role, model, tools and prompt summary.
 4. Define the agent graph: which agent calls which agent or tool, and in which sequence.
