@@ -1,0 +1,170 @@
+{
+  "search_calls": {
+    "id": "chatcmpl-fixture-search",
+    "object": "chat.completion",
+    "model": "test-model-not-real",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "tool_calls",
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "tool_calls": [
+            {
+              "id": "call_web",
+              "type": "function",
+              "function": {
+                "name": "search_web",
+                "arguments": "{}"
+              }
+            },
+            {
+              "id": "call_encyclopedia",
+              "type": "function",
+              "function": {
+                "name": "search_encyclopedia",
+                "arguments": "{}"
+              }
+            },
+            {
+              "id": "call_papers",
+              "type": "function",
+              "function": {
+                "name": "search_papers",
+                "arguments": "{}"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "bad_arguments_call": {
+    "id": "chatcmpl-fixture-bad",
+    "object": "chat.completion",
+    "model": "test-model-not-real",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "tool_calls",
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "tool_calls": [
+            {
+              "id": "call_bad_1",
+              "type": "function",
+              "function": {
+                "name": "search_web",
+                "arguments": "{bad"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "final": {
+    "What is CRISPR?": {
+      "id": "chatcmpl-fixture-crispr",
+      "object": "chat.completion",
+      "model": "test-model-not-real",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"summary\":\"CRISPR is a gene editing technology that lets scientists change DNA at a chosen location [1]. CRISPR sequences were first found in bacteria as part of an immune defense against viruses [2]. The Cas9 enzyme cuts DNA at a site that a guide RNA selects [4]. Research shows that Cas9 can be programmed with RNA to cut specific DNA sequences [5]. One risk is unwanted cuts at DNA sites that are similar to the target site [7].\"}"
+          }
+        }
+      ]
+    },
+    "How do vaccines train the immune system?": {
+      "id": "chatcmpl-fixture-how-do-vaccines-train-the-immune-system",
+      "object": "chat.completion",
+      "model": "test-model-not-real",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"summary\":\"Vaccines train the immune system to recognize a germ without causing the disease [1]. After vaccination, B cells make antibodies that bind to the germ [2]. A vaccine gives active acquired immunity to a particular disease [4]. Vaccines create long-lived memory B cells and T cells [5]. Some vaccines use mRNA to give cells instructions to make a harmless piece of a viral protein [6].\"}"
+          }
+        }
+      ]
+    },
+    "What causes ocean tides?": {
+      "id": "chatcmpl-fixture-what-causes-ocean-tides",
+      "object": "chat.completion",
+      "model": "test-model-not-real",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"summary\":\"Tides are the rise and fall of sea levels caused by the gravity of the Moon and the Sun [1]. The gravity of the Moon causes two tidal bulges on opposite sides of the Earth [2]. Spring tides occur when the Sun, Moon and Earth are in a line [3].\"}"
+          }
+        }
+      ]
+    },
+    "How does photosynthesis work?": {
+      "id": "chatcmpl-fixture-how-does-photosynthesis-work",
+      "object": "chat.completion",
+      "model": "test-model-not-real",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"summary\":\"Photosynthesis is the process in which plants use light energy to make sugar from carbon dioxide and water [1]. It takes place mainly in the chloroplasts of plant cells [4]. Chlorophyll absorbs mostly red and blue light and reflects green light [2]. The Calvin cycle uses energy from the light reactions to fix carbon dioxide into sugar [5]. The process releases oxygen as a by-product [3].\"}"
+          }
+        }
+      ]
+    },
+    "What is a black hole?": {
+      "id": "chatcmpl-fixture-what-is-a-black-hole",
+      "object": "chat.completion",
+      "model": "test-model-not-real",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"summary\":\"A black hole is a region of space where gravity is so strong that not even light can escape [1]. Black holes form when very massive stars collapse at the end of their life [4]. Detectors observed gravitational waves from two merging black holes [6]. Black holes are the oldest objects in the universe [9]. Most large galaxies have a supermassive black hole at their center [7].\"}"
+          }
+        }
+      ]
+    },
+    "How do honeybees communicate?": {
+      "id": "chatcmpl-fixture-how-do-honeybees-communicate",
+      "object": "chat.completion",
+      "model": "test-model-not-real",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"summary\":\"Honeybees perform a waggle dance to tell other bees the direction and distance to food [1]. The angle of the waggle run shows the direction of the food relative to the sun [4]. Bees release pheromones to signal alarm and to mark the hive [2]. Worker bees also use vibration signals to change the activity of other workers [6].\"}"
+          }
+        }
+      ]
+    }
+  },
+  "http_401": {
+    "status": 401,
+    "body": {
+      "error": {
+        "message": "Incorrect API key.",
+        "type": "invalid_request_error",
+        "code": "invalid_api_key"
+      }
+    }
+  }
+}
