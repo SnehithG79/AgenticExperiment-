@@ -1,14 +1,14 @@
 {
   "id": "20261026-research-summary",
   "title": "Research summary agent",
-  "status": "running",
-  "agent": "okati-localhost",
+  "status": "merged",
+  "agent": null,
   "round": 2,
   "max_rounds": 3,
   "branch": "okati/20261026-research-summary",
   "backlog_item": "Research agent: search three sources, write a summary with citations",
   "created": "2026-10-26T21:09:23Z",
-  "updated": "2026-10-26T21:35:37Z",
+  "updated": "2026-10-26T21:35:38Z",
   "history": [
     {
       "round": 1,
