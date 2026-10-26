@@ -51,7 +51,8 @@ Tests and localhost runs use mock mode.
 7. Make one command start the system: `npm start`.
 8. Use a port from 3000 to 3999. `server.js` refuses all other ports.
 9. Use test data only. If a tool needs an external service, give it a test double with fixture data.
-10. Do not add runtime dependencies if Node.js built-in modules can do the work.
+10. Do not raise `MAX_TURNS` above 5. An agent stops with the error `max_turns` after 5 model turns.
+11. Do not add runtime dependencies if Node.js built-in modules can do the work.
 
 ## evals/cases.json format
 

@@ -39,7 +39,8 @@ A job merges to `main` only when two conditions are true:
 1. The reviewer gives the verdict `APPROVE`.
 2. The localhost agent writes the result `PASS`.
 
-If a job does not pass after 3 rounds, the job stops and waits for a human.
+If a job does not pass after 5 rounds, the job stops and waits for a human.
+A resume does not reset the count. okati does not start more than 5 rounds for one job.
 
 ## Requirements
 
@@ -160,14 +161,17 @@ The tester and the localhost agent use mock mode.
 
 | Setting | Where | Default |
 | --- | --- | --- |
-| Maximum rounds | `max_rounds` in `job.json`, before the job starts | 3 |
+| Maximum rounds | `max_rounds` in `job.json`, before the job starts. 5 is the limit. | 5 |
 | Agent model | `model:` in each `.claude/agents/okati-*.md` file | opus or sonnet |
 | Localhost ports | `design.md` of each job. `server.js` refuses other ports. | 3000 to 3999 |
 | System model | `AGENT_MODEL` environment variable | `claude-sonnet-5-5` |
+| Agent turns in a system | `maxTurns` in `lib/agent-loop.js`. 5 is the limit. | 5 |
 
 ## Safety rules
 
 - okati does not merge a branch before the localhost agent writes `PASS`.
+- okati does not start more than 5 rounds for one job.
+- Each agent in a built system stops after 5 model turns with the error `max_turns`.
 - Each agent writes only its own output files. The orchestrator checks this after each agent.
 - The orchestrator commits each output. A later change to a verdict stops the merge.
 - Systems read API keys from environment variables. No key is in the code.

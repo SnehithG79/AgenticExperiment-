@@ -92,14 +92,15 @@ Do these steps for each job. Write `job.json` after each step. Set `updated` eac
 1. Make the job ID in the format `YYYYMMDD-<short-name>`. Use today's date and two or three words.
 2. If the job ID exists, add `-2`, `-3` and so on.
 3. Make the job folder. Write the request text to `request.md`.
-4. Write `job.json` with status `planning`, round `0` and `max_rounds` 3. Add the job ID to `index.json`.
+4. Write `job.json` with status `planning`, round `0` and `max_rounds` 5. Add the job ID to `index.json`.
 5. If the request is from the backlog, record the backlog line in `job.json` under `backlog_item`.
 6. Start `okati-planner`. Wait for `plan.md`.
 7. If the first line of `plan.md` is `blocked: true`, go to section 8. Use reason `plan blocked`.
 8. Set status `designing`. Start `okati-designer`. Wait for `design.md`.
 9. Make the branch and the worktree:
    `git worktree add -b okati/<job-id> .okati/worktrees/<job-id> main`
-10. Add 1 to the round. Make the folder `round-N/`. Set status `coding`.
+10. If the round is equal to `max_rounds`, go to section 8. Do not start a new round.
+    Then add 1 to the round. Make the folder `round-N/`. Set status `coding`.
 11. Start `okati-coder`. Wait for `round-N/build.md`.
 12. Set status `verifying`. Start `okati-tester` and `okati-visualizer` in the same message, so that they run at the same time.
 13. Wait for `round-N/test-report.md` and `round-N/visual-report.md`. Do not continue until both reports exist.
@@ -167,7 +168,7 @@ Each job has one `job.json` file. Only the orchestrator writes this file. The da
   "status": "reviewing",
   "agent": "okati-reviewer",
   "round": 2,
-  "max_rounds": 3,
+  "max_rounds": 5,
   "branch": "okati/20261026-support-triage",
   "backlog_item": "Support ticket triage agent: read new tickets, set the team and the priority",
   "created": "2026-10-26T09:14:00Z",
@@ -193,7 +194,8 @@ Each job has one `job.json` file. Only the orchestrator writes this file. The da
 | `merged` | The branch is on `main`. The job is complete. |
 | `needs-human` | The job stops. A human must read `needs-human.md` and make a decision. |
 
-NOTE: The value `max_rounds` is 3 by default. Change the value in `job.json` before the job starts.
+NOTE: The value `max_rounds` is 5. It is the round limit. You can set a lower value in `job.json` before the job starts.
+Do not set a value higher than 5. The round limit stops a job that loops again and again.
 
 ## 11. needs-human.md format
 
@@ -215,7 +217,8 @@ Reason: <one sentence>
 1. Read `needs-human.md`. Find the section `## Human decision`.
 2. If the section is empty or has only the placeholder line, tell the user that the decision is missing. Stop.
 3. Rename `needs-human.md` to `needs-human-round-<N>.md`.
-4. Set `max_rounds` to the current round plus 3.
+4. Do not change `max_rounds`. The rounds before the stop count toward the limit of 5.
+   If the round is equal to 5, tell the user that the job used all rounds. Tell the user to start a new job. Stop.
 5. Change the backlog mark from `[!]` back to `[ ]`.
 6. If the decision changes the plan, write the decision to `request.md` under `## Human decision`. Go to step 6 of section 6.
 7. If the decision changes the design, go to step 8 of section 6. Keep the branch.
@@ -250,6 +253,7 @@ okati/
 
 ## 14. Safety rules
 
+- Do not start more than 5 rounds for one job. A resume does not reset the count.
 - Do not merge a branch to `main` before the localhost agent writes `PASS`.
 - Do not put an API key in a file. Systems read keys from environment variables.
 - Use only ports from 3000 to 3999 for localhost runs. Use test keys and test data only.
