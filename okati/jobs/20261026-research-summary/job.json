@@ -8,7 +8,7 @@
   "branch": "okati/20261026-research-summary",
   "backlog_item": "Research agent: search three sources, write a summary with citations",
   "created": "2026-10-26T21:09:23Z",
-  "updated": "2026-10-26T21:34:30Z",
+  "updated": "2026-10-26T21:35:37Z",
   "history": [
     {
       "round": 1,
@@ -25,8 +25,8 @@
       "visual": "PASS",
       "review": "APPROVE",
       "review_sha256": "1fde4ff806818fff6b2627807d75d7e91463c9adccbbaefc9cc17477fc0bf9ee",
-      "run": null,
-      "run_sha256": null
+      "run": "PASS",
+      "run_sha256": "36f1a1ccd132e7c34136ef4a3fd982291d715bbd2e29f1cd23fbe7b8bfc19935"
     }
   ],
   "needs_human": null,
