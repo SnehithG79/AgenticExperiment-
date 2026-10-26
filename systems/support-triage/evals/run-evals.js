@@ -1,6 +1,6 @@
 // Sends each case in cases.json to the system and compares the result.
 // Usage: node evals/run-evals.js            (in process)
-//        node evals/run-evals.js --url http://localhost:3100   (running server)
+//        node evals/run-evals.js --url http://localhost:3142   (running server)
 
 import { readFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";

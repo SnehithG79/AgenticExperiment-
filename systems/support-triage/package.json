@@ -1,9 +1,9 @@
 {
-  "name": "okati-agent-system",
+  "name": "support-triage",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Minimal okati agentic system: one agent, one tool, POST /run, GET /health.",
+  "description": "Support ticket triage: one agent (triager) selects a team and a priority for each new ticket.",
   "engines": { "node": ">=20" },
   "scripts": {
     "start": "node server.js",

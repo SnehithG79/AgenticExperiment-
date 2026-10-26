@@ -1,0 +1,14 @@
+{
+  "teams": ["billing", "technical", "account", "sales", "general"],
+  "priorities": [
+    { "id": "P1", "meaning": "Service outage or security issue." },
+    { "id": "P2", "meaning": "Blocks one customer." },
+    { "id": "P3", "meaning": "Normal issue." },
+    { "id": "P4", "meaning": "Question or request." }
+  ],
+  "confidence_limit": 0.6,
+  "review_team": "general",
+  "review_tag": "needs-review",
+  "default_priority": "P3",
+  "language": "en"
+}

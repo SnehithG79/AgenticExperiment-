@@ -1,9 +1,10 @@
 // HTTP entry point. POST /run {"input": ...} -> {"output": ...} or {"error": "<code>"}.
 // GET /health -> 200 when ready. Listens on 127.0.0.1, port 3000 to 3999 only.
+// Optional schedule: a run every TRIAGE_INTERVAL_MINUTES minutes when the value is more than 0.
 
 import http from "node:http";
 import { pathToFileURL } from "node:url";
-import { run } from "./orchestrator.js";
+import { run, createScheduledRunner } from "./orchestrator.js";
 import { modelMode } from "./lib/llm.js";
 
 const MAX_BODY = 64 * 1024;
@@ -42,8 +43,17 @@ export function checkPort(value) {
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
-  const port = checkPort(process.env.PORT || 3100);
+  const port = checkPort(process.env.PORT || 3142);
   createServer().listen(port, "127.0.0.1", () => {
     console.log(`listening on http://localhost:${port} (model mode: ${modelMode()})`);
   });
+  startSchedule(process.env.TRIAGE_INTERVAL_MINUTES);
+}
+
+// Starts the scheduled run. Returns the timer, or null when the schedule is off.
+export function startSchedule(value) {
+  const minutes = Number(value || 0);
+  if (!Number.isFinite(minutes) || minutes <= 0) return null;
+  const scheduledRun = createScheduledRunner();
+  return setInterval(scheduledRun, minutes * 60_000);
 }
