@@ -1,14 +1,14 @@
 {
   "id": "20261026-research-summary",
   "title": "Research summary agent",
-  "status": "reviewing",
-  "agent": "okati-reviewer",
+  "status": "designing",
+  "agent": "okati-designer",
   "round": 1,
   "max_rounds": 3,
   "branch": "okati/20261026-research-summary",
   "backlog_item": "Research agent: search three sources, write a summary with citations",
   "created": "2026-10-26T21:09:23Z",
-  "updated": "2026-10-26T21:28:49Z",
+  "updated": "2026-10-26T21:29:50Z",
   "history": [
     {
       "round": 1,
@@ -22,6 +22,7 @@
   ],
   "needs_human": null,
   "notes": [
-    "Round 1 CHANGES removes .env loading that the user asked for; paused for a user decision before round 2"
+    "Round 1 CHANGES removes .env loading that the user asked for; paused for a user decision before round 2",
+    "Human decision (round 1): keep .env loading; back to designer, round count kept"
   ]
 }

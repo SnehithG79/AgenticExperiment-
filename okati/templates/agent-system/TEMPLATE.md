@@ -45,6 +45,7 @@ Tests and localhost runs use mock mode.
 ## Rules
 
 1. Read all API keys from environment variables. Do not put a key in the code.
+   `server.js` can load a local `.env` file into the environment. Git ignores `.env`. Do not commit a `.env` file.
 2. Validate each tool input against its schema before the tool runs. `lib/agent-loop.js` does this.
 3. Give each agent only the tools that the design lists for that agent.
 4. Make `POST /run` accept a JSON body `{"input": ...}`.

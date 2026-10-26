@@ -19,6 +19,8 @@ Do these steps:
 2. If the round is 1, copy `okati/templates/agent-system/` into the system folder that `design.md` names.
 3. If the round is 2 or higher, read the last `review.md` or `run.md`. Correct each item with the label `CHANGE`.
    If the template `lib/` folder on `main` changed, copy the current files into the system `lib/` folder.
+   If `needs-human-round-*.md` files exist, read each `## Human decision`.
+   A human decision has priority over a `CHANGE` item. Do not correct a `CHANGE` item that a decision cancels.
 4. Write the code that `design.md` specifies.
 5. Write one unit test for each tool.
 6. Write each evaluation case of `design.md` into `evals/cases.json`. Make one test for each case.
