@@ -8,8 +8,10 @@
   "branch": "okati/20261026-openai-env",
   "backlog_item": "Switch both systems to OpenAI keys: update support-triage lib to the current template, make each .env.example list only AGENT_PROVIDER=openai, OPENAI_API_KEY and OPENAI_MODEL",
   "created": "2026-10-26T21:35:47Z",
-  "updated": "2026-10-26T21:47:10Z",
+  "updated": "2026-10-26T21:47:59Z",
   "history": [],
   "needs_human": null,
-  "notes": []
+  "notes": [
+    "Paused by the user during round 1 verifying. Tester and visualizer were stopped before they wrote reports. On resume, start both again for round 1."
+  ]
 }
