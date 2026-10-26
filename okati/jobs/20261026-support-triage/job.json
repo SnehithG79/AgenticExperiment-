@@ -1,9 +1,9 @@
 {
   "id": "20261026-support-triage",
   "title": "Support ticket triage agent",
-  "status": "reviewing",
-  "agent": "okati-reviewer",
-  "round": 1,
+  "status": "coding",
+  "agent": "okati-coder",
+  "round": 2,
   "max_rounds": 5,
   "branch": "okati/20261026-support-triage",
   "backlog_item": "Support ticket triage agent: read new tickets, set the team and the priority",
