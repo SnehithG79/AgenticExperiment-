@@ -1,9 +1,9 @@
 {
-  "name": "okati-agent-system",
+  "name": "research-summary",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Minimal okati agentic system: one agent, one tool, POST /run, GET /health.",
+  "description": "Research summary: one agent (researcher) searches three sources and writes a summary with checked [n] citations.",
   "engines": { "node": ">=20" },
   "scripts": {
     "start": "node server.js",

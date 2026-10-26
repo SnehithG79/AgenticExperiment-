@@ -10,7 +10,7 @@ const { run } = await import("../orchestrator.js");
 const { createServer } = await import("../server.js");
 
 const cases = await loadCases();
-const PORT = Number(process.env.TEST_PORT || 3901);
+const PORT = Number(process.env.TEST_PORT || 3917);
 let server;
 
 before(() => new Promise(resolve => { server = createServer().listen(PORT, "127.0.0.1", resolve); }));
@@ -28,6 +28,14 @@ for (const c of cases) {
     assert.ok(matches(c.expected, await res.json()));
   });
 }
+
+test("T15: each case with an output uses 5 model calls or fewer, and no case returns max_turns", async () => {
+  for (const c of cases) {
+    const result = await run(c.input);
+    assert.notEqual(result.error, "max_turns", `case ${c.id}`);
+    if (result.output) assert.ok(result.output.model_calls <= 5, `case ${c.id}: ${result.output.model_calls} model calls`);
+  }
+});
 
 test("GET /health returns 200", async () => {
   const res = await fetch(`http://127.0.0.1:${PORT}/health`);

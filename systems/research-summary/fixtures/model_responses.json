@@ -1,0 +1,53 @@
+{
+  "What is CRISPR?": {
+    "sentences": [
+      { "text": "CRISPR is a gene editing technology that lets scientists change DNA at a chosen location [1].", "key_terms": ["gene editing", "DNA"] },
+      { "text": "CRISPR sequences were first found in bacteria as part of an immune defense against viruses [2].", "key_terms": ["bacteria", "immune defense"] },
+      { "text": "The Cas9 enzyme cuts DNA at a site that a guide RNA selects [4].", "key_terms": ["Cas9", "guide RNA"] },
+      { "text": "Research shows that Cas9 can be programmed with RNA to cut specific DNA sequences [5].", "key_terms": ["programmed", "specific DNA sequences"] },
+      { "text": "One risk is unwanted cuts at DNA sites that are similar to the target site [7].", "key_terms": ["unwanted cuts", "target site"] }
+    ]
+  },
+  "How do vaccines train the immune system?": {
+    "sentences": [
+      { "text": "Vaccines train the immune system to recognize a germ without causing the disease [1].", "key_terms": ["recognize", "without causing the disease"] },
+      { "text": "After vaccination, B cells make antibodies that bind to the germ [2].", "key_terms": ["B cells", "antibodies"] },
+      { "text": "A vaccine gives active acquired immunity to a particular disease [4].", "key_terms": ["active acquired immunity"] },
+      { "text": "Vaccines create long-lived memory B cells and T cells [5].", "key_terms": ["long-lived memory", "T cells"] },
+      { "text": "Some vaccines use mRNA to give cells instructions to make a harmless piece of a viral protein [6].", "key_terms": ["mRNA", "viral protein"] }
+    ]
+  },
+  "What causes ocean tides?": {
+    "sentences": [
+      { "text": "Tides are the rise and fall of sea levels caused by the gravity of the Moon and the Sun [1].", "key_terms": ["rise and fall", "gravity"] },
+      { "text": "The gravity of the Moon causes two tidal bulges on opposite sides of the Earth [2].", "key_terms": ["tidal bulges", "opposite sides"] },
+      { "text": "Spring tides occur when the Sun, Moon and Earth are in a line [3].", "key_terms": ["spring tides", "in a line"] }
+    ]
+  },
+  "How does photosynthesis work?": {
+    "sentences": [
+      { "text": "Photosynthesis is the process in which plants use light energy to make sugar from carbon dioxide and water [1].", "key_terms": ["light energy", "carbon dioxide"] },
+      { "text": "It takes place mainly in the chloroplasts of plant cells [4].", "key_terms": ["chloroplasts"] },
+      { "text": "Chlorophyll absorbs mostly red and blue light and reflects green light [2].", "key_terms": ["chlorophyll", "green light"] },
+      { "text": "The Calvin cycle uses energy from the light reactions to fix carbon dioxide into sugar [5].", "key_terms": ["Calvin cycle", "fix carbon dioxide"] },
+      { "text": "The process releases oxygen as a by-product [3].", "key_terms": ["oxygen", "by-product"] }
+    ]
+  },
+  "What is a black hole?": {
+    "sentences": [
+      { "text": "A black hole is a region of space where gravity is so strong that not even light can escape [1].", "key_terms": ["gravity", "light can escape"] },
+      { "text": "Black holes form when very massive stars collapse at the end of their life [4].", "key_terms": ["massive stars", "collapse"] },
+      { "text": "Detectors observed gravitational waves from two merging black holes [6].", "key_terms": ["gravitational waves", "merging"] },
+      { "text": "Black holes are the oldest objects in the universe [9].", "key_terms": [], "expect_removed": true },
+      { "text": "Most large galaxies have a supermassive black hole at their center [7].", "key_terms": ["supermassive", "center"] }
+    ]
+  },
+  "How do honeybees communicate?": {
+    "sentences": [
+      { "text": "Honeybees perform a waggle dance to tell other bees the direction and distance to food [1].", "key_terms": ["waggle dance", "distance"] },
+      { "text": "The angle of the waggle run shows the direction of the food relative to the sun [4].", "key_terms": ["angle", "relative to the sun"] },
+      { "text": "Bees release pheromones to signal alarm and to mark the hive [2].", "key_terms": ["pheromones", "alarm"] },
+      { "text": "Worker bees also use vibration signals to change the activity of other workers [6].", "key_terms": ["vibration signals"] }
+    ]
+  }
+}
