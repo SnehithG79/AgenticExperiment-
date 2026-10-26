@@ -1,0 +1,15 @@
+{
+  "id": "20261026-support-triage",
+  "title": "Support ticket triage agent",
+  "status": "planning",
+  "agent": "okati-planner",
+  "round": 0,
+  "max_rounds": 3,
+  "branch": "okati/20261026-support-triage",
+  "backlog_item": "Support ticket triage agent: read new tickets, set the team and the priority",
+  "created": "2026-10-26T20:48:47Z",
+  "updated": "2026-10-26T20:48:47Z",
+  "history": [],
+  "needs_human": null,
+  "notes": []
+}
