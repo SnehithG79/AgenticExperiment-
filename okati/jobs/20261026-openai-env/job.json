@@ -1,14 +1,14 @@
 {
   "id": "20261026-openai-env",
   "title": "Switch systems to OpenAI keys",
-  "status": "coding",
-  "agent": "okati-coder",
+  "status": "verifying",
+  "agent": "okati-tester,okati-visualizer",
   "round": 1,
   "max_rounds": 3,
   "branch": "okati/20261026-openai-env",
   "backlog_item": "Switch both systems to OpenAI keys: update support-triage lib to the current template, make each .env.example list only AGENT_PROVIDER=openai, OPENAI_API_KEY and OPENAI_MODEL",
   "created": "2026-10-26T21:35:47Z",
-  "updated": "2026-10-26T21:43:40Z",
+  "updated": "2026-10-26T21:47:10Z",
   "history": [],
   "needs_human": null,
   "notes": []
