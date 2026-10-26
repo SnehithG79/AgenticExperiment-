@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>okati board</title>
+<style>
+  :root {
+    --bg: #f6f5f1; --panel: #ffffff; --ink: #1d1d1b; --quiet: #6b6a65; --line: #dedcd4;
+    --accent: #2f6f8f; --good: #2e7d4f; --warn: #c7362b; --step: #ebe9e2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #161615; --panel: #201f1d; --ink: #ecebe6; --quiet: #9c9a93; --line: #34332f;
+      --accent: #6fb3d2; --good: #5fbf85; --warn: #ef6a5e; --step: #2b2a27; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 14px/1.45 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { display: flex; align-items: baseline; gap: 16px; padding: 20px 24px 8px; flex-wrap: wrap; }
+  h1 { font-size: 20px; margin: 0; letter-spacing: -0.01em; }
+  .meta { color: var(--quiet); font-size: 12px; }
+  #alerts { padding: 0 24px; }
+  .board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 1fr);
+    gap: 12px; padding: 12px 24px 32px; overflow-x: auto; }
+  .col h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--quiet);
+    margin: 0 0 8px; display: flex; justify-content: space-between; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+    padding: 12px; margin-bottom: 10px; }
+  .card.human { border: 2px solid var(--warn); }
+  .card.merged { border-left: 4px solid var(--good); }
+  .title { font-weight: 600; margin-bottom: 2px; }
+  .id { font: 11px ui-monospace, Menlo, monospace; color: var(--quiet); word-break: break-all; }
+  .row { display: flex; justify-content: space-between; font-size: 12px; color: var(--quiet); margin-top: 8px; }
+  .verdict { font: 600 11px ui-monospace, Menlo, monospace; }
+  .steps { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; margin-top: 10px; }
+  .steps span { height: 6px; border-radius: 3px; background: var(--step); }
+  .steps span.done { background: var(--quiet); }
+  .steps span.now { background: var(--accent); }
+  .empty { color: var(--quiet); font-size: 12px; padding: 24px; }
+  .error { margin: 12px 24px; padding: 12px; border: 1px solid var(--warn); border-radius: 8px; }
+  @media (max-width: 640px) { header, #alerts { padding-left: 16px; padding-right: 16px; }
+    .board { padding: 12px 16px 24px; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>okati board</h1>
+  <span class="meta" id="updated">Loading jobs…</span>
+</header>
+<div id="alerts"></div>
+<div class="board" id="board"></div>
+<script>
+  const STATUSES = ["queued", "planning", "designing", "coding", "verifying", "reviewing", "running", "merged", "needs-human"];
+  const STEPS = ["okati-planner", "okati-designer", "okati-coder", "okati-tester", "okati-visualizer", "okati-reviewer", "okati-localhost"];
+  const STEP_OF = { queued: -1, planning: 0, designing: 1, coding: 2, verifying: 3, reviewing: 5, running: 6, merged: 7 };
+
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  function lastVerdict(job) {
+    const h = (job.history || []).at(-1);
+    if (!h) return "";
+    return h.run || h.review || [h.test && "test " + h.test, h.visual && "visual " + h.visual].filter(Boolean).join(", ");
+  }
+
+  function steps(job) {
+    let now = STEP_OF[job.status];
+    if (job.status === "needs-human") now = Math.max(0, STEPS.indexOf(job.agent));
+    return STEPS.map((name, i) => {
+      const verifying = job.status === "verifying" && (i === 3 || i === 4);
+      const cls = verifying || i === now ? "now" : i < now ? "done" : "";
+      return `<span class="${cls}" title="${name}"></span>`;
+    }).join("");
+  }
+
+  function card(job) {
+    const cls = job.status === "needs-human" ? "human" : job.status === "merged" ? "merged" : "";
+    return `<div class="card ${cls}">
+      <div class="title">${esc(job.title || job.id)}</div>
+      <div class="id">${esc(job.id)}</div>
+      <div class="row"><span>Round ${esc(job.round)} / ${esc(job.max_rounds)}</span>
+        <span class="verdict">${esc(lastVerdict(job))}</span></div>
+      <div class="steps">${steps(job)}</div>
+    </div>`;
+  }
+
+  async function load() {
+    try {
+      const ids = await (await fetch("jobs/index.json", { cache: "no-store" })).json();
+      const jobs = (await Promise.all(ids.map(id =>
+        fetch(`jobs/${encodeURIComponent(id)}/job.json`, { cache: "no-store" }).then(r => r.ok ? r.json() : null).catch(() => null)
+      ))).filter(Boolean);
+
+      const human = jobs.filter(j => j.status === "needs-human");
+      document.getElementById("alerts").innerHTML = human.length
+        ? `<div class="col"><h2><span>Needs human</span><span>${human.length}</span></h2>${human.map(card).join("")}</div>` : "";
+
+      document.getElementById("board").innerHTML = jobs.length ? STATUSES.filter(s => s !== "needs-human").map(s => {
+        const list = jobs.filter(j => j.status === s).sort((a, b) => String(b.updated).localeCompare(String(a.updated)));
+        return `<div class="col"><h2><span>${s}</span><span>${list.length}</span></h2>${list.map(card).join("")}</div>`;
+      }).join("") : `<div class="empty">No jobs yet. Run /okati next to start the first job.</div>`;
+
+      document.getElementById("updated").textContent = `${jobs.length} jobs · updated ${new Date().toLocaleTimeString()}`;
+    } catch (e) {
+      document.getElementById("board").innerHTML =
+        `<div class="error">Cannot read jobs/index.json. Serve the okati folder with a static file server, for example: python3 -m http.server 8080</div>`;
+    }
+  }
+
+  load();
+  setInterval(load, 10000);
+</script>
+</body>
+</html>
