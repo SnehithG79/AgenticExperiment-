@@ -17,9 +17,11 @@ Do these steps:
 1. Read all input files.
 2. Run `git diff main...okati/<job-id>` in the project root and read the diff.
 3. Examine the code for security problems: secrets in code, unsafe tool permissions and unvalidated tool input.
-4. Examine the guardrails of `design.md`. Make sure that the code obeys each guardrail.
-5. Examine the code for quality: structure, names and error handling.
-6. Write one verdict on the first line of `review.md`: `APPROVE`, `CHANGES` or `ESCALATE`.
+4. Compare the `lib/` folder of the system with `okati/templates/agent-system/lib/` on `main`.
+   Each difference is a `CHANGE` item. The coding agent copies the current template files.
+5. Examine the guardrails of `design.md`. Make sure that the code obeys each guardrail.
+6. Examine the code for quality: structure, names and error handling.
+7. Write one verdict on the first line of `review.md`: `APPROVE`, `CHANGES` or `ESCALATE`.
 
 ```markdown
 CHANGES

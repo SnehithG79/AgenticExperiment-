@@ -18,6 +18,7 @@ Do these steps:
 1. Go to the worktree `.okati/worktrees/<job-id>/`. Make sure that the branch is `okati/<job-id>`.
 2. If the round is 1, copy `okati/templates/agent-system/` into the system folder that `design.md` names.
 3. If the round is 2 or higher, read the last `review.md` or `run.md`. Correct each item with the label `CHANGE`.
+   If the template `lib/` folder on `main` changed, copy the current files into the system `lib/` folder.
 4. Write the code that `design.md` specifies.
 5. Write one unit test for each tool.
 6. Write each evaluation case of `design.md` into `evals/cases.json`. Make one test for each case.
@@ -39,7 +40,7 @@ Rules:
 
 - Do not add agents or tools that `design.md` does not specify.
 - Do not put secrets or API keys in the code. Read keys from environment variables.
-- Do not change `lib/agent-loop.js`, `lib/llm.js` or `lib/schema.js` of the template.
+- Do not edit `lib/agent-loop.js`, `lib/llm.js` or `lib/schema.js`. Only copy them from the template.
 - Commit only in the worktree. Do not run `git checkout` in the project root.
 - Do not change files in the job folder other than `round-N/build.md`.
 - Do not merge the branch.
