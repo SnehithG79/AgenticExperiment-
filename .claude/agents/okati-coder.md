@@ -13,6 +13,9 @@ The branch is checked out in the worktree `.okati/worktrees/<job-id>/`.
 Inputs: `<job folder>/design.md`, the last `review.md` or `run.md` (round 2 and higher)
 Outputs: commits on the branch, `<job folder>/round-N/build.md`
 
+If `design.md` names more than one system folder, do each step for each folder.
+Use the start command and the port that `design.md` gives for each folder.
+
 Do these steps:
 
 1. Go to the worktree `.okati/worktrees/<job-id>/`. Make sure that the branch is `okati/<job-id>`.

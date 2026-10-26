@@ -13,6 +13,9 @@ The branch is checked out in the worktree `.okati/worktrees/<job-id>/`.
 Inputs: `<job folder>/design.md`, the code in the worktree
 Output: `<job folder>/run.md`
 
+If `design.md` names more than one system folder, do each step for each folder.
+Use the start command and the port that `design.md` gives for each folder.
+
 Do these steps:
 
 1. Go to the system folder in the worktree. `design.md` names the system folder.
