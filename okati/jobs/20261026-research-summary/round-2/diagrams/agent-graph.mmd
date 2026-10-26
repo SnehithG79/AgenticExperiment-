@@ -1,0 +1,21 @@
+graph TD
+  run_input[POST /run input - server.js] --> validate_input
+  validate_input -->|empty_input or invalid_input| error_out[error output]
+  validate_input -->|valid question| researcher
+  researcher -->|turn 1 tool call| search_web
+  researcher -->|turn 1 tool call| search_encyclopedia
+  researcher -->|turn 1 tool call| search_papers
+  search_web --> web_api[(web_api: createFakeSearch or createHttpSearch)]
+  search_encyclopedia --> encyclopedia_api[(encyclopedia_api: createFakeSearch or createHttpSearch)]
+  search_papers --> papers_api[(papers_api: createFakeSearch or createHttpSearch)]
+  search_web --> source_registry[(source_registry)]
+  search_encyclopedia --> source_registry
+  search_papers --> source_registry
+  researcher -->|turn 2 summary JSON| check_results
+  source_registry --> check_results
+  check_results -->|0 items, no_results| error_out
+  check_results -->|AgentError max_turns or bad_output| error_out
+  check_results -->|1 or more items| clean_summary
+  source_registry --> clean_summary
+  clean_summary -->|empty summary, summary_invalid| error_out
+  clean_summary -->|summary, sources, warnings| output[output]

@@ -1,14 +1,14 @@
 {
   "id": "20261026-research-summary",
   "title": "Research summary agent",
-  "status": "verifying",
-  "agent": "okati-tester,okati-visualizer",
+  "status": "reviewing",
+  "agent": "okati-reviewer",
   "round": 2,
   "max_rounds": 3,
   "branch": "okati/20261026-research-summary",
   "backlog_item": "Research agent: search three sources, write a summary with citations",
   "created": "2026-10-26T21:09:23Z",
-  "updated": "2026-10-26T21:32:15Z",
+  "updated": "2026-10-26T21:33:06Z",
   "history": [
     {
       "round": 1,
@@ -16,6 +16,15 @@
       "visual": "PASS",
       "review": "CHANGES",
       "review_sha256": "dbde5860196219fa34447ef6b99294da839d2ddc871f658ccd906ddbc175cc3f",
+      "run": null,
+      "run_sha256": null
+    },
+    {
+      "round": 2,
+      "test": "PASS",
+      "visual": "PASS",
+      "review": null,
+      "review_sha256": null,
       "run": null,
       "run_sha256": null
     }
