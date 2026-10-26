@@ -1,15 +1,25 @@
 {
   "id": "20261026-research-summary",
   "title": "Research summary agent",
-  "status": "verifying",
-  "agent": "okati-tester,okati-visualizer",
+  "status": "reviewing",
+  "agent": "okati-reviewer",
   "round": 1,
   "max_rounds": 3,
   "branch": "okati/20261026-research-summary",
   "backlog_item": "Research agent: search three sources, write a summary with citations",
   "created": "2026-10-26T21:09:23Z",
-  "updated": "2026-10-26T21:25:49Z",
-  "history": [],
+  "updated": "2026-10-26T21:26:52Z",
+  "history": [
+    {
+      "round": 1,
+      "test": "PASS",
+      "visual": "PASS",
+      "review": null,
+      "review_sha256": null,
+      "run": null,
+      "run_sha256": null
+    }
+  ],
   "needs_human": null,
   "notes": []
 }
