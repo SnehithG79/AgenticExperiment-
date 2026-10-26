@@ -2,7 +2,17 @@
 
 System folder: systems/research-summary/
 
-Job: 20261026-research-summary. Round: 0. Branch: okati/20261026-research-summary.
+Job: 20261026-research-summary. Round: 1. Branch: okati/20261026-research-summary.
+
+## Changes in round 1
+
+The source of these changes is the human decision in `needs-human-round-1.md`.
+
+1. Keep the `.env` file. `server.js` loads a local `.env` file into the environment, as the template does: `try { process.loadEnvFile(new URL("./.env", import.meta.url)); } catch {}`. Values that are set in the shell environment have priority. `process.loadEnvFile` does not replace a variable that is already set. Do not change this behavior.
+2. Orchestrator guardrail 8 is changed. API keys come from the environment or from a local `.env` file that Git ignores. Never commit a key or a `.env` file. See "Guardrails" and "Key handling".
+3. The two CHANGE items in `round-1/review.md` are cancelled. Do not remove the `.env` load from `server.js`. Keep the `.env` instructions in `README.md` and `.env.example`.
+4. The environment variable table now lists `AGENT_PROVIDER`, `OPENAI_API_KEY` and `OPENAI_MODEL`. `lib/llm.js` from the template supports them, and the user uses an OpenAI key. The round 1 `.env.example` already lists them.
+5. No other change. The agents, the agent graph, the tool contracts, the fixtures and the evaluation cases are the same as in round 0. The round 1 code agrees with them. The coding agent must not change other files for this round.
 
 ## Summary
 
@@ -47,7 +57,7 @@ systems/research-summary/
 
 | Agent | Role | Model | Tools |
 |-------|------|-------|-------|
-| `researcher` | Select the three search tools in the first turn. Then write a summary of the search results with a maximum of 250 words. Put 1 or more `[n]` citation markers in each sentence. | `claude-sonnet-5-5` (override with `AGENT_MODEL`) | `search_web`, `search_encyclopedia`, `search_papers` |
+| `researcher` | Select the three search tools in the first turn. Then write a summary of the search results with a maximum of 250 words. Put 1 or more `[n]` citation markers in each sentence. | Anthropic: `claude-sonnet-5-5` (override with `AGENT_MODEL`). OpenAI: the value of `OPENAI_MODEL` when `AGENT_PROVIDER=openai`. Mock mode: the `mock(messages)` policy. | `search_web`, `search_encyclopedia`, `search_papers` |
 
 ### Agent `researcher`
 
@@ -476,8 +486,21 @@ The orchestrator must not:
 5. Cite a source that failed. The failed source has no registry items, so no marker can point to it.
 6. Keep questions, results or summaries after the request. Each request creates new adapters and a new registry. The system writes no files and no logs with the question or the results.
 7. Send more than 1000 characters of one snippet to the model.
-8. Read an API key from a file in the repository. It reads `ANTHROPIC_API_KEY`, `WEB_SEARCH_KEY` and `PAPERS_KEY` from the environment only.
+8. Read an API key from a source other than the environment or a local `.env` file that Git ignores. API keys (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `WEB_SEARCH_KEY`, `PAPERS_KEY`) come from the environment or from `systems/research-summary/.env`. Only the start block of `server.js` loads `.env`. Values in the shell environment have priority. Never commit a key or a `.env` file. Never put a key in the code, in `.env.example`, in a fixture, in a test or in a log.
 9. Use the HTTP adapter or live mode in tests or in the localhost run.
+10. Load `.env` in tests. Tests import `createServer` and `run`. They do not run the start block of `server.js`, and they set `AGENT_MODE=mock`.
+11. Remove `.env` from `.gitignore`.
+
+### Key handling
+
+| Item | Required state |
+|------|----------------|
+| `server.js` start block | Calls `process.loadEnvFile(new URL("./.env", import.meta.url))` in a `try` block before `checkPort`. A missing `.env` file is not an error. |
+| Priority | A variable that is set in the shell keeps its shell value. `.env` sets only variables that are not set. |
+| `.gitignore` | Contains `node_modules/` and `.env`. |
+| `.env.example` | Line 1 tells the user to copy the file to `.env` in the same folder. It lists all variable names of the table in "Localhost run". Each secret has an empty value. |
+| `README.md` | Tells the user to copy `.env.example` to `.env` in the system folder and fill in the keys. States that `npm start` reads `.env`, that shell values have priority and that Git ignores `.env`. |
+| Git | No `.env` file and no key value is in a commit. |
 
 ## Evaluation cases
 
@@ -562,14 +585,19 @@ curl -s localhost:3217/run -H 'content-type: application/json' -d '{"input":"Wha
 node evals/run-evals.js --url http://localhost:3217
 ```
 
-Environment variables (`.env.example`, no values for secrets):
+The start command sets `AGENT_MODE=mock` in the shell. Shell values have priority over `.env`, so the localhost run uses mock mode also when `.env` contains a key.
+
+Environment variables. The user can set them in the shell or in a local `.env` file (copy `.env.example`). `.env.example` has no values for secrets.
 
 | Name | Default | Meaning |
 |------|---------|---------|
 | `PORT` | 3217 | Port from 3000 to 3999. |
 | `AGENT_MODE` | auto | auto, mock or live. |
-| `ANTHROPIC_API_KEY` | empty | Needed only in live mode. |
-| `AGENT_MODEL` | claude-sonnet-5-5 | Model for live mode. |
+| `AGENT_PROVIDER` | auto | openai or anthropic. Auto selects openai if only `OPENAI_API_KEY` has a value. |
+| `OPENAI_API_KEY` | empty | OpenAI key. Needed only in live mode with OpenAI. |
+| `OPENAI_MODEL` | empty | OpenAI model name. Needed only in live mode with OpenAI. |
+| `ANTHROPIC_API_KEY` | empty | Anthropic key. Needed only in live mode with Anthropic. |
+| `AGENT_MODEL` | claude-sonnet-5-5 | Anthropic model for live mode. |
 | `SEARCH_ADAPTER` | fake | fake or http. |
 | `WEB_SEARCH_URL` | empty | Needed only for the http adapter. |
 | `WEB_SEARCH_KEY` | empty | Needed only for the http adapter. |
