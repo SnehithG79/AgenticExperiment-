@@ -1,14 +1,14 @@
 {
   "id": "20261026-research-summary",
   "title": "Research summary agent",
-  "status": "planning",
-  "agent": "okati-planner",
+  "status": "designing",
+  "agent": "okati-designer",
   "round": 0,
   "max_rounds": 3,
   "branch": "okati/20261026-research-summary",
   "backlog_item": "Research agent: search three sources, write a summary with citations",
   "created": "2026-10-26T21:09:23Z",
-  "updated": "2026-10-26T21:09:23Z",
+  "updated": "2026-10-26T21:10:10Z",
   "history": [],
   "needs_human": null,
   "notes": []
