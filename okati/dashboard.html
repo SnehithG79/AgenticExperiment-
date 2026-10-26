@@ -36,6 +36,12 @@
   .steps span { height: 6px; border-radius: 3px; background: var(--step); }
   .steps span.done { background: var(--quiet); }
   .steps span.now { background: var(--accent); }
+  .hist { margin-top: 8px; font: 11px ui-monospace, Menlo, monospace; color: var(--quiet); }
+  .hist b.FAIL, .hist b.CHANGES, .hist b.ESCALATE { color: var(--warn); font-weight: 600; }
+  .hist b.PASS, .hist b.APPROVE { color: var(--good); font-weight: 600; }
+  .reason { margin-top: 8px; font-size: 12px; }
+  .links { margin-top: 8px; font-size: 12px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .links a { color: var(--accent); }
   .empty { color: var(--quiet); font-size: 12px; padding: 24px; }
   .error { margin: 12px 24px; padding: 12px; border: 1px solid var(--warn); border-radius: 8px; }
   @media (max-width: 640px) { header, #alerts { padding-left: 16px; padding-right: 16px; }
@@ -72,6 +78,20 @@
     }).join("");
   }
 
+  const mark = v => v ? `<b class="${esc(v)}">${esc(v)}</b>` : "–";
+  function history(job) {
+    return (job.history || []).map(h =>
+      `<div>R${esc(h.round)} test ${mark(h.test)} visual ${mark(h.visual)} review ${mark(h.review)} run ${mark(h.run)}</div>`).join("");
+  }
+  function links(job) {
+    const base = `jobs/${encodeURIComponent(job.id)}/`;
+    const files = [["plan", "plan.md"], ["design", "design.md"]];
+    if (job.round) files.push(["review", `round-${job.round}/review.md`]);
+    if ((job.history || []).some(h => h.run)) files.push(["run", "run.md"]);
+    if (job.status === "needs-human") files.push(["needs-human", "needs-human.md"]);
+    return files.map(([label, f]) => `<a href="${base}${f}" target="_blank" rel="noopener">${label}</a>`).join("");
+  }
+
   function card(job) {
     const cls = job.status === "needs-human" ? "human" : job.status === "merged" ? "merged" : "";
     return `<div class="card ${cls}">
@@ -80,6 +100,9 @@
       <div class="row"><span>Round ${esc(job.round)} / ${esc(job.max_rounds)}</span>
         <span class="verdict">${esc(lastVerdict(job))}</span></div>
       <div class="steps">${steps(job)}</div>
+      ${job.needs_human ? `<div class="reason">${esc(job.needs_human)}</div>` : ""}
+      <div class="hist">${history(job)}</div>
+      <div class="links">${links(job)}</div>
     </div>`;
   }
 

@@ -1,0 +1,6 @@
+[
+  { "id": "E1", "input": "the quick brown fox", "expected": { "words": 4 } },
+  { "id": "E2", "input": "  one\ttwo\nthree  ", "expected": { "words": 3 } },
+  { "id": "E3", "input": "", "expected": { "error": "empty_input" } },
+  { "id": "E4", "input": "   ", "expected": { "error": "empty_input" } }
+]
