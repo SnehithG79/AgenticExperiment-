@@ -59,7 +59,7 @@ Error codes: `invalid_input`, `empty_input`, `no_results`, `summary_invalid`, `m
 | `PAPERS_KEY` | empty | Needed only for the http adapter |
 
 `lib/llm.js` also supports OpenAI in live mode (`AGENT_PROVIDER`, `OPENAI_API_KEY`, `OPENAI_MODEL`).
-To add keys, copy `.env.example` to `.env` in this folder. `npm start` reads `.env`. Git ignores `.env`.
+To add keys, copy `.env.example` to `.env` in this folder and fill in the keys. `npm start` reads `.env`. A variable that is set in the shell has priority over `.env`. Git ignores `.env`. Do not commit a `.env` file or a key.
 Tests and the localhost run use mock mode and the fake adapters with the data in `fixtures/`.
 
 ## Example
