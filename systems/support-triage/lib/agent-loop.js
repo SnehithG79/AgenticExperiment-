@@ -1,5 +1,6 @@
 // Tool-use loop for one agent. The agent can call only its own tools.
 // Each tool input is validated against the tool schema before the tool runs.
+// The loop stops after MAX_TURNS model turns, so an agent cannot loop again and again.
 
 import { validate } from "./schema.js";
 import { createModel } from "./llm.js";
@@ -8,7 +9,10 @@ export class AgentError extends Error {
   constructor(code) { super(code); this.code = code; }
 }
 
-export async function runAgent(agent, input, { maxTurns = 8, model = createModel(agent) } = {}) {
+export const MAX_TURNS = 5;
+
+export async function runAgent(agent, input, { maxTurns = MAX_TURNS, model = createModel(agent) } = {}) {
+  maxTurns = Math.min(maxTurns, MAX_TURNS);
   const messages = [{ role: "user", content: input }];
   const toolDefs = agent.tools.map(t => ({ name: t.name, description: t.description, input_schema: t.inputSchema }));
 
