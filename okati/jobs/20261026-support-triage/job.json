@@ -1,8 +1,8 @@
 {
   "id": "20261026-support-triage",
   "title": "Support ticket triage agent",
-  "status": "running",
-  "agent": "okati-localhost",
+  "status": "merged",
+  "agent": null,
   "round": 2,
   "max_rounds": 5,
   "branch": "okati/20261026-support-triage",
