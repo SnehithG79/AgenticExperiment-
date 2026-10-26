@@ -1,15 +1,25 @@
 {
   "id": "20261026-support-triage",
   "title": "Support ticket triage agent",
-  "status": "verifying",
-  "agent": "okati-tester,okati-visualizer",
+  "status": "reviewing",
+  "agent": "okati-reviewer",
   "round": 1,
   "max_rounds": 5,
   "branch": "okati/20261026-support-triage",
   "backlog_item": "Support ticket triage agent: read new tickets, set the team and the priority",
   "created": "2026-10-26T20:48:47Z",
-  "updated": "2026-10-26T21:00:37Z",
-  "history": [],
+  "updated": "2026-10-26T21:02:20Z",
+  "history": [
+    {
+      "round": 1,
+      "test": "PASS",
+      "visual": "PASS",
+      "review": null,
+      "review_sha256": null,
+      "run": null,
+      "run_sha256": null
+    }
+  ],
   "needs_human": null,
   "notes": []
 }
