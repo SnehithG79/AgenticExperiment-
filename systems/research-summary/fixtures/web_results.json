@@ -1,0 +1,40 @@
+{
+  "What is CRISPR?": [
+    { "title": "CRISPR explained", "url": "https://web.example.test/crispr-explained", "snippet": "CRISPR is a gene editing technology that lets scientists change DNA at a chosen location." },
+    { "title": "CRISPR", "url": "https://encyclopedia.example.test/wiki/CRISPR", "snippet": "CRISPR sequences were first found in the DNA of bacteria, where they are part of an immune defense against viruses." },
+    { "title": "How CRISPR is used in medicine", "url": "https://web.example.test/crispr-medicine", "snippet": "Doctors test CRISPR therapies for sickle cell disease." },
+    { "title": "CRISPR history timeline", "url": "https://web.example.test/crispr-timeline", "snippet": "Two scientists received the 2020 Nobel Prize in Chemistry for CRISPR work." }
+  ],
+  "How do vaccines train the immune system?": [
+    { "title": "How vaccines work", "url": "https://web.example.test/vaccines-how", "snippet": "Vaccines train the immune system to recognize a germ without causing the disease." },
+    { "title": "Vaccines and antibodies", "url": "https://web.example.test/vaccines-antibodies", "snippet": "After a vaccine, B cells make antibodies that bind to the germ." },
+    { "title": "Memory cells after vaccination", "url": "https://web.example.test/vaccines-memory", "snippet": "Memory cells stay in the body and respond fast when the real germ arrives." },
+    { "title": "Vaccine page 4", "url": "https://web.example.test/vaccines-page-4", "snippet": "More information about vaccines, page 4." },
+    { "title": "Vaccine page 5", "url": "https://web.example.test/vaccines-page-5", "snippet": "More information about vaccines, page 5." },
+    { "title": "Vaccine page 6", "url": "https://web.example.test/vaccines-page-6", "snippet": "More information about vaccines, page 6." },
+    { "title": "Vaccine page 7", "url": "https://web.example.test/vaccines-page-7", "snippet": "More information about vaccines, page 7." },
+    { "title": "Vaccine page 8", "url": "https://web.example.test/vaccines-page-8", "snippet": "More information about vaccines, page 8." },
+    { "title": "Vaccine page 9", "url": "https://web.example.test/vaccines-page-9", "snippet": "More information about vaccines, page 9." },
+    { "title": "Vaccine page 10", "url": "https://web.example.test/vaccines-page-10", "snippet": "More information about vaccines, page 10." }
+  ],
+  "What causes ocean tides?": [],
+  "How does photosynthesis work?": [
+    { "title": "Photosynthesis basics", "url": "https://web.example.test/photosynthesis-basics", "snippet": "Photosynthesis is the process in which plants use light energy to make sugar from carbon dioxide and water." },
+    { "title": "Chlorophyll and light", "url": "https://web.example.test/chlorophyll", "snippet": "Chlorophyll absorbs mostly red and blue light and reflects green light." },
+    { "title": "Oxygen from plants", "url": "https://web.example.test/photosynthesis-oxygen", "snippet": "Photosynthesis releases oxygen as a by-product." },
+    { "title": "Photosynthesis quiz", "url": "https://web.example.test/photosynthesis-quiz", "snippet": "Test your knowledge of photosynthesis." }
+  ],
+  "What is a black hole?": [
+    { "title": "Black holes explained", "url": "https://web.example.test/black-holes", "snippet": "A black hole is a region of space where gravity is so strong that not even light can escape." },
+    { "title": "Event horizon", "url": "https://web.example.test/event-horizon", "snippet": "The boundary of a black hole is called the event horizon." },
+    { "title": "First black hole image", "url": "https://web.example.test/black-hole-image", "snippet": "In 2019 the Event Horizon Telescope released the first image of a black hole." },
+    { "title": "Black hole facts for kids", "url": "https://web.example.test/black-hole-kids", "snippet": "Fun facts about black holes." }
+  ],
+  "How do honeybees communicate?": [
+    { "title": "The waggle dance", "url": "https://web.example.test/waggle-dance", "snippet": "Honeybees perform a waggle dance to tell other bees the direction and distance to food." },
+    { "title": "Bee pheromones", "url": "https://web.example.test/bee-pheromones", "snippet": "Bees release pheromones to signal alarm and to mark the hive." },
+    { "title": "Round dance", "url": "https://web.example.test/round-dance", "snippet": "A round dance tells bees that food is near the hive." },
+    { "title": "Beekeeping supplies", "url": "https://web.example.test/beekeeping-shop", "snippet": "Buy hives and tools for beekeeping." }
+  ],
+  "What is the zorblax protocol?": []
+}
