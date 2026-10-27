@@ -4,11 +4,11 @@
   "status": "merged",
   "agent": null,
   "round": 1,
-  "max_rounds": 3,
+  "max_rounds": 5,
   "branch": "okati/20261026-openai-env",
   "backlog_item": "Switch both systems to OpenAI keys: update support-triage lib to the current template, make each .env.example list only AGENT_PROVIDER=openai, OPENAI_API_KEY and OPENAI_MODEL",
   "created": "2026-10-26T21:35:47Z",
-  "updated": "2026-10-27T03:05:30Z",
+  "updated": "2026-10-27T15:44:47Z",
   "history": [
     {
       "round": 1,
@@ -23,6 +23,8 @@
   "needs_human": null,
   "notes": [
     "Paused by the user during round 1 verifying. Tester and visualizer were stopped before they wrote reports. On resume, start both again for round 1.",
-    "Scheduled resume at 03:00 UTC (no supervision): mock mode only, no OpenAI calls, stop by 05:00 UTC."
+    "Scheduled resume at 03:00 UTC (no supervision): mock mode only, no OpenAI calls, stop by 05:00 UTC.",
+    "Pushed to GitHub main df44900 at 03:05 UTC. No live OpenAI or Anthropic call was made during the scheduled run.",
+    "Record fix: max_rounds was written as 3 at job start; the factory limit is 5. The job finished within 3 rounds, so the outcome is unchanged."
   ]
 }

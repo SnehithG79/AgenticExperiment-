@@ -4,11 +4,11 @@
   "status": "merged",
   "agent": null,
   "round": 2,
-  "max_rounds": 3,
+  "max_rounds": 5,
   "branch": "okati/20261026-research-summary",
   "backlog_item": "Research agent: search three sources, write a summary with citations",
   "created": "2026-10-26T21:09:23Z",
-  "updated": "2026-10-26T21:35:38Z",
+  "updated": "2026-10-27T15:44:47Z",
   "history": [
     {
       "round": 1,
@@ -32,6 +32,7 @@
   "needs_human": null,
   "notes": [
     "Round 1 CHANGES removes .env loading that the user asked for; paused for a user decision before round 2",
-    "Human decision (round 1): keep .env loading; back to designer, round count kept"
+    "Human decision (round 1): keep .env loading; back to designer, round count kept",
+    "Record fix: max_rounds was written as 3 at job start; the factory limit is 5. The job finished within 3 rounds, so the outcome is unchanged."
   ]
 }
