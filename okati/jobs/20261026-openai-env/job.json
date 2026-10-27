@@ -8,7 +8,7 @@
   "branch": "okati/20261026-openai-env",
   "backlog_item": "Switch both systems to OpenAI keys: update support-triage lib to the current template, make each .env.example list only AGENT_PROVIDER=openai, OPENAI_API_KEY and OPENAI_MODEL",
   "created": "2026-10-26T21:35:47Z",
-  "updated": "2026-10-27T03:04:23Z",
+  "updated": "2026-10-27T03:05:29Z",
   "history": [
     {
       "round": 1,
@@ -16,8 +16,8 @@
       "visual": "PASS",
       "review": "APPROVE",
       "review_sha256": "2caf8387e1ddfac8e0357099a9c0d2fd3d3b3b0c89ca4cca8ab364730b6e683f",
-      "run": null,
-      "run_sha256": null
+      "run": "PASS",
+      "run_sha256": "eb8468944a26520f966739cbe43dfb6552f31939dfd744f92cddb2ee9f5ebaf3"
     }
   ],
   "needs_human": null,
