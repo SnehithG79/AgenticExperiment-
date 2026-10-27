@@ -1,21 +1,21 @@
 {
   "id": "20261026-openai-env",
   "title": "Switch systems to OpenAI keys",
-  "status": "reviewing",
-  "agent": "okati-reviewer",
+  "status": "running",
+  "agent": "okati-localhost",
   "round": 1,
   "max_rounds": 3,
   "branch": "okati/20261026-openai-env",
   "backlog_item": "Switch both systems to OpenAI keys: update support-triage lib to the current template, make each .env.example list only AGENT_PROVIDER=openai, OPENAI_API_KEY and OPENAI_MODEL",
   "created": "2026-10-26T21:35:47Z",
-  "updated": "2026-10-27T03:02:37Z",
+  "updated": "2026-10-27T03:04:23Z",
   "history": [
     {
       "round": 1,
       "test": "PASS",
       "visual": "PASS",
-      "review": null,
-      "review_sha256": null,
+      "review": "APPROVE",
+      "review_sha256": "2caf8387e1ddfac8e0357099a9c0d2fd3d3b3b0c89ca4cca8ab364730b6e683f",
       "run": null,
       "run_sha256": null
     }
