@@ -49,8 +49,9 @@ Error codes: `invalid_input`, `empty_input`, `no_results`, `summary_invalid`, `m
 | --- | --- | --- |
 | `PORT` | 3217 | Port from 3000 to 3999 |
 | `AGENT_MODE` | auto | auto, mock or live |
-| `ANTHROPIC_API_KEY` | empty | Needed only in live mode |
-| `AGENT_MODEL` | claude-sonnet-5-5 | Model for live mode |
+| `AGENT_PROVIDER` | openai | Model provider. Use openai. |
+| `OPENAI_API_KEY` | empty | OpenAI key. Needed only in live mode. |
+| `OPENAI_MODEL` | empty | OpenAI model name. Needed only in live mode. |
 | `SEARCH_ADAPTER` | fake | fake or http |
 | `WEB_SEARCH_URL` | empty | Needed only for the http adapter |
 | `WEB_SEARCH_KEY` | empty | Needed only for the http adapter |
@@ -58,8 +59,7 @@ Error codes: `invalid_input`, `empty_input`, `no_results`, `summary_invalid`, `m
 | `PAPERS_URL` | empty | Needed only for the http adapter |
 | `PAPERS_KEY` | empty | Needed only for the http adapter |
 
-`lib/llm.js` also supports OpenAI in live mode (`AGENT_PROVIDER`, `OPENAI_API_KEY`, `OPENAI_MODEL`).
-To add keys, copy `.env.example` to `.env` in this folder and fill in the keys. `npm start` reads `.env`. A variable that is set in the shell has priority over `.env`. Git ignores `.env`. Do not commit a `.env` file or a key.
+To add keys, copy `.env.example` to `.env` in this folder and fill in the keys. `npm start` reads `.env`. A variable that is set in the shell has priority over `.env`. Git ignores `.env`. Do not commit a `.env` file or a key. `npm start` needs Node.js 20.12 or later.
 Tests and the localhost run use mock mode and the fake adapters with the data in `fixtures/`.
 
 ## Example

@@ -58,8 +58,9 @@ curl -s localhost:3142/run -H 'content-type: application/json' -d '{"input":{"ti
 | --- | --- | --- |
 | `PORT` | 3142 | Port from 3000 to 3999 |
 | `AGENT_MODE` | auto | auto, mock or live |
-| `ANTHROPIC_API_KEY` | empty | Needed only in live mode |
-| `AGENT_MODEL` | claude-sonnet-5-5 | Model for live mode |
+| `AGENT_PROVIDER` | openai | Model provider. Use openai. |
+| `OPENAI_API_KEY` | empty | OpenAI key. Needed only in live mode. |
+| `OPENAI_MODEL` | empty | OpenAI model name. Needed only in live mode. |
 | `TICKET_ADAPTER` | fake | fake or rest |
 | `TICKET_API_URL` | empty | Needed only for the rest adapter |
 | `TICKET_API_TOKEN` | empty | Needed only for the rest adapter |
@@ -68,4 +69,4 @@ curl -s localhost:3142/run -H 'content-type: application/json' -d '{"input":{"ti
 | `TRIAGE_CLOCK` | fixed with the fake adapter | fixed or system |
 | `TRIAGE_LOG` | on | on or off |
 
-Keys are read from the environment only. Do not put a key in a file in the repository.
+To add your keys, copy `.env.example` to `.env` in this folder and fill in the values. `npm start` reads `.env`. A value that is set in the shell has priority over `.env`. Git ignores `.env`. Do not commit a `.env` file or a key. `npm start` needs Node.js 20.12 or later.

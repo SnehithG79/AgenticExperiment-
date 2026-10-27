@@ -18,7 +18,7 @@ export async function runAgent(agent, input, { maxTurns = MAX_TURNS, model = cre
 
   for (let turn = 0; turn < maxTurns; turn++) {
     const res = await model.call({
-      model: process.env.AGENT_MODEL || agent.model,
+      model: agent.model,
       max_tokens: 1024,
       system: agent.system,
       tools: toolDefs,
