@@ -1,0 +1,24 @@
+graph TD
+  env_file[(.env in system folder)] -->|loadEnvFile, shell wins| server
+  shell_env[(shell environment)] --> server
+  server -->|POST /run| orchestrator
+  server -->|GET /health| model_mode
+  orchestrator --> validate_input
+  validate_input -->|valid question| researcher
+  researcher -->|tool call| search_web
+  researcher -->|tool call| search_encyclopedia
+  researcher -->|tool call| search_papers
+  search_web --> source_registry[(source_registry)]
+  search_encyclopedia --> source_registry
+  search_papers --> source_registry
+  researcher --> agent_loop
+  agent_loop -->|validate tool input| schema
+  agent_loop --> create_model
+  create_model --> provider
+  create_model --> model_mode
+  model_mode -->|mock| mock_policy[researcher.mock]
+  model_mode -->|live, provider openai| openai_model
+  model_mode -.->|live, provider anthropic, template branch| anthropic_model
+  openai_model -->|toOpenAI request| openai_api[(api.openai.com/v1/chat/completions)]
+  openai_api -->|fromOpenAI response| agent_loop
+  researcher --> check_results --> clean_summary --> output

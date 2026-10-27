@@ -1,0 +1,28 @@
+graph TD
+  env_file[(.env in system folder)] -->|loadEnvFile, shell wins| server
+  shell_env[(shell environment)] --> server
+  server -->|POST /run| orchestrator
+  server -->|GET /health| model_mode
+  schedule[schedule TRIAGE_INTERVAL_MINUTES] --> orchestrator
+  orchestrator -->|tool call| fetch_new_tickets
+  fetch_new_tickets --> ticket_api[(ticket_api fake or rest)]
+  orchestrator --> dedupe --> validate_ticket
+  validate_ticket -->|valid| state_store[(state_store)]
+  state_store -->|not processed| triager
+  triager -->|tool call| get_triage_rules
+  get_triage_rules --> triage_config[(triage_config)]
+  triager --> agent_loop
+  agent_loop -->|validate tool input| schema
+  agent_loop --> create_model
+  create_model --> provider
+  create_model --> model_mode
+  model_mode -->|mock| mock_policy[triager.mock]
+  model_mode -->|live, provider openai| openai_model
+  model_mode -.->|live, provider anthropic, template branch| anthropic_model
+  openai_model -->|toOpenAI request| openai_api[(api.openai.com/v1/chat/completions)]
+  openai_api -->|fromOpenAI response| agent_loop
+  triager -->|valid output or retry once| route_review
+  route_review -->|tool call| update_ticket
+  update_ticket --> ticket_api
+  update_ticket -->|ok| state_store
+  orchestrator -->|after all tickets| summary
